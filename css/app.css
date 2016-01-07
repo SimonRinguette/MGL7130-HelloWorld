@@ -1,0 +1,37 @@
+body {
+    font-size: 2em;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    width:100%;
+	background-color: #ee3823;
+	color: #ffffff;
+}
+
+.app {
+		padding: 30px 30px;
+}
+
+div.info {
+		margin-top: 15px;
+		margin-bottom: 15px;
+}
+
+/* Utilise un media selector pour déterminer si l'orientation est portrait ou paysage */
+.portrait {
+	display: inline-block;
+}
+.paysage {
+	display: none;
+}
+@media (orientation: landscape) {
+	.portrait {
+		display: none;
+	}
+	.paysage {
+		display: inline-block;
+	}
+}
+
+
+
