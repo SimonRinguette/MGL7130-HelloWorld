@@ -12,23 +12,23 @@ var app = {
         this.bindEvents();
     },
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        $(document).on('deviceready', this.onDeviceReady);
     },
     onDeviceReady: function() {
 		// L'API Cordova est prête		
-		document.getElementById('version').innerHTML = device.cordova;
-		document.getElementById('plateforme').innerHTML = device.platform;
-		document.getElementById('model').innerHTML = device.model;
-		document.getElementById('uuid').innerHTML = device.uuid;
+		$('#version').html(device.cordova);
+		$('#plateforme').html(device.platform);
+		$('#model').html(device.model);
+		$('#uuid').html(device.uuid);
 
 		if (navigator.geolocation) {
 			navigator.geolocation.watchPosition(function(position){
-				document.getElementById('gps').innerHTML = "(" + position.coords.latitude.toFixed(4) + ", " + position.coords.longitude.toFixed(4) + ")"; 
+				$('#gps').html("(" + position.coords.latitude.toFixed(4) + ", " + position.coords.longitude.toFixed(4) + ")"); 
 			}, function(err){
-				document.getElementById('gps').innerHTML = err.message;
+				$('#gps').html(err.message)
 			});
 		} else {
-			document.getElementById('gps').innerHTML = "Geolocation is not supported by this device.";
+				$('#gps').html("Geolocation is not supported by this device.")
 		}
 	}
 };
