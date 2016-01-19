@@ -19,28 +19,29 @@
         <title>Hello MGL-7130</title>
     </head>
     <body>
-        <div class="app">
+        <div class="app" ng-app="HelloWorld" ng-controller="HelloWorldController">
             <h1>Hello MGL-7130</h1>        			
 			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Version de Cordova: <span id="version"></span>
+				<i class="fa fa-hand-spock-o"></i> Version de Cordova: <span>{{version}}</span>
 			</div>
 			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Plateforme: <span id="plateforme"></span>
+				<i class="fa fa-hand-spock-o"></i> Plateforme: <span>{{plateforme}}</span>
 			</div>
 			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Model: <span id="model"></span>
+				<i class="fa fa-hand-spock-o"></i> Model: <span>{{model}}</span>
 			</div>
 			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> UUID: <span id="uuid"></span>
+				<i class="fa fa-hand-spock-o"></i> UUID: <span>{{uuid}}</span>
 			</div>
 			<div class="info">
 				<i class="fa fa-hand-spock-o"></i> Orientation: <span class="portrait">Portrait</span><span class="paysage">Paysage</span>
 			</div>
 			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Position GPS: <span id="gps">En attente <i class="fa fa-spinner fa-pulse"></i></span>
+				<i class="fa fa-hand-spock-o"></i> Position GPS: <span>{{gps()}} <i ng-hide="latitude" class="fa fa-spinner fa-pulse"></i></span>
 			</div>
 		</div>
         <script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="lib/angularjs-1.4.8/angular.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
