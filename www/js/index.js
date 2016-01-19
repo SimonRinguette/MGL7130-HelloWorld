@@ -7,6 +7,26 @@
 
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+var angularApp = angular.module('ionicApp', ['ionic']);
+var angularScope;
+
+angularApp.controller('HelloWorldController', function($scope) {
+	angularScope = $scope;
+	$scope.version = '';
+	$scope.plateforme = '';
+	$scope.model = '';
+	$scope.uuid = '';
+	$scope.gps = function() {
+		if($scope.gpsError){
+			return $scope.gpsError;
+		}
+		if($scope.latitude && $scope.longitude) {
+				return "(" + $scope.latitude + ", " + $scope.longitude + ")";
+		}
+		return 'En attente';
+	}
+});		
+
 var app = {
     initialize: function() {
         this.bindEvents();
@@ -16,21 +36,30 @@ var app = {
     },
     onDeviceReady: function() {
 		// L'API Cordova est prête		
-		document.getElementById('version').innerHTML = device.cordova;
-		document.getElementById('plateforme').innerHTML = device.platform;
-		document.getElementById('model').innerHTML = device.model;
-		document.getElementById('uuid').innerHTML = device.uuid;
-
+		angularScope.$apply(function() {
+			angularScope.version = device.version;
+			angularScope.plateforme = device.platform;
+			angularScope.model = device.model;
+			angularScope.uuid = device.uuid;
+		});
+		
 		if (navigator.geolocation) {
-			navigator.geolocation.watchPosition(function(position){
-				document.getElementById('gps').innerHTML = "(" + position.coords.latitude.toFixed(4) + ", " + position.coords.longitude.toFixed(4) + ")"; 
+			navigator.geolocation.watchPosition(function(position){				
+				angularScope.$apply(function(){
+					angularScope.latitude = position.coords.latitude.toFixed(4);
+					angularScope.longitude = position.coords.longitude.toFixed(4);
+				});
+				
 			}, function(err){
-				document.getElementById('gps').innerHTML = err.message;
+				angularScope.$apply(function(){
+					angularScope.gpsError = err.message; 
+				});
 			});
 		} else {
-			document.getElementById('gps').innerHTML = "Geolocation is not supported by this device.";
+			angularScope.$apply(function(){
+				angularScope.gpsError = "Geolocation is not supported by this device."; 
+			});			
 		}
 	}
 };
 app.initialize();
-

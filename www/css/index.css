@@ -17,24 +17,6 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    width:100%;
-	background-color: #ee3823;
-	color: #ffffff;
-}
-.app {
-		padding: 30px 30px;
-}
-h1 {
-	text-align:center;
-}
-
-div.info {
-		margin-top: 15px;
-		margin-bottom: 15px;
 }
 
 /* Utilise un media selector pour déterminer si l'orientation est portrait ou paysage */

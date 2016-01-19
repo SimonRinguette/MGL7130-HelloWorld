@@ -15,32 +15,39 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="lib/ionic-1.2.1/css/ionic.min.css">
 		<link rel="stylesheet" type="text/css" href="lib/font-awesome-4.5.0/css/font-awesome.min.css">
         <title>Hello MGL-7130</title>
     </head>
-    <body>
-        <div class="app">
-            <h1>Hello MGL-7130</h1>        			
-			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Version de Cordova: <span id="version"></span>
-			</div>
-			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Plateforme: <span id="plateforme"></span>
-			</div>
-			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Model: <span id="model"></span>
-			</div>
-			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> UUID: <span id="uuid"></span>
-			</div>
-			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Orientation: <span class="portrait">Portrait</span><span class="paysage">Paysage</span>
-			</div>
-			<div class="info">
-				<i class="fa fa-hand-spock-o"></i> Position GPS: <span id="gps">En attente <i class="fa fa-spinner fa-pulse"></i></span>
-			</div>
-		</div>
+    <body ng-app="ionicApp" ng-controller="HelloWorldController">
+		<ion-header-bar class="bar-assertive">
+			<h1 class="title">Hello MGL-7130</h1>
+		</ion-header-bar>
+		<ion-content>
+			<ion-list>
+					<ion-item>
+						<i class="fa fa-hand-spock-o"></i> Version de Cordova: <span>{{version}}</span>
+					</ion-item>
+					<ion-item>
+						<i class="fa fa-hand-spock-o"></i> Plateforme: <span>{{plateforme}}</span>
+					</ion-item>
+					<ion-item>
+						<i class="fa fa-hand-spock-o"></i> Model: <span>{{model}}</span>
+					</ion-item>
+					<ion-item>
+						<i class="fa fa-hand-spock-o"></i> UUID: <span>{{uuid}}</span>
+					</ion-item>
+					<ion-item>
+						<i class="fa fa-hand-spock-o"></i> Orientation: <span class="portrait">Portrait</span><span class="paysage">Paysage</span>
+					</ion-item>
+					<ion-item>
+						<i class="fa fa-hand-spock-o"></i> Position GPS: <span>{{gps()}} <i ng-hide="latitude" class="fa fa-spinner fa-pulse"></i></span>
+					</ion-item>
+			</ion-list>
+		</ion-content>
+
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="lib/ionic-1.2.1/js/ionic.bundle.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
