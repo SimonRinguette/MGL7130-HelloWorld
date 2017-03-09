@@ -13,6 +13,9 @@
 	<plugin name="cordova-plugin-geolocation" />
 	<plugin name="cordova-plugin-device" />	
 	<plugin name="cordova-plugin-splashscreen" />	
+	<plugin name="cordova-plugin-device-motion" />	
+	<plugin name="cordova-plugin-camera" />
+	<plugin name="cordova-plugin-barcodescanner" />	
 	<access origin="*" />
 	<preference name="DisallowOverscroll" value="true"/>
 	<preference name="BackgroundColor" value="0xffee3823"/>

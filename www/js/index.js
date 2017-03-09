@@ -15,7 +15,7 @@ var app = {
         $(document).on('deviceready', this.onDeviceReady);
     },
     onDeviceReady: function() {
-		// L'API Cordova est prÃªte		
+		// L'API Cordova est prête		
 		$('#version').html(device.cordova);
 		$('#plateforme').html(device.platform);
 		$('#model').html(device.model);
@@ -30,7 +30,55 @@ var app = {
 		} else {
 				$('#gps').html("Geolocation is not supported by this device.")
 		}
+		
+		if(navigator.accelerometer) {
+			navigator.accelerometer.watchAcceleration(function(accel) {
+				$('#accel').html( Math.round(accel.x) + ' : ' + Math.round(accel.y) + ' : ' + Math.round(accel.z));
+			}, function(err) {
+				$('#accel').html( err.message );
+			}, { frequency : 500 });
+		} else {
+				$('#accel').html("Acceleration is not supported by this device.")
+		}
+		
+		if(navigator.camera) {
+			$('#picture').click(function() {
+				navigator.camera.getPicture(function(imageBase64){
+					$('#takenpicture').attr('src', "data:image/jpeg;base64," + imageBase64).show();					
+				}, function(message){
+					$('#picture').html(message);
+				}, {
+					destinationType: Camera.DestinationType.DATA_URL
+					
+				});
+			});
+		} else {
+			$('#picture').html('Camera is not supported by this device');
+		}
+		if(cordova.plugins.barcodeScanner) {
+			$('#barcode').click(function() {
+				cordova.plugins.barcodeScanner.scan(
+					function (result) {
+						$('#barcode').html(result.text);
+					}, 
+					function (error) {
+						$('#barcode').html(error);
+					}
+				);
+			});
+		} else {
+			$('#barcode').html('Barcode are not supported');
+		}
+
+		
+		
+
+		
 	}
 };
 app.initialize();
+
+window.addEventListener('deviceorientation', function(event) {
+  $('#position').html( Math.round(event.beta) + ' : ' + Math.round(event.gamma) + ' : ' + Math.round(event.alpha));
+});	
 
