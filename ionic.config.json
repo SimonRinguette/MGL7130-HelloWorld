@@ -1,0 +1,8 @@
+{
+  "name": "hello-world-mgl-7130",
+  "app_id": "d4175a5f",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
