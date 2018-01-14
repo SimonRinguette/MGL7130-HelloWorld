@@ -1,3 +1,25 @@
 page-home {
+  .toolbar-title, .item {
+    color: #ffffff;
+  }
+  .toolbar-background, .content, .item {
+    background-color:  #ee3823;
+  }
 
+
+  .portrait {
+  	display: inline-block;
+  }
+  .paysage {
+  	display: none;
+  }
+
+  @media (orientation: landscape) {
+  	.portrait {
+  		display: none;
+  	}
+  	.paysage {
+  		display: inline-block;
+  	}
+  }
 }

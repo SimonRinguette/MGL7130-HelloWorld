@@ -1,14 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Hello MGL-7130
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-list>
+    <ion-item><ion-icon name="hand"></ion-icon> Version de Cordova: {{device.cordova}}</ion-item>
+    <ion-item><ion-icon name="hand"></ion-icon> Plateforme: {{device.platform}}</ion-item>
+    <ion-item><ion-icon name="hand"></ion-icon> Model: {{device.model}}</ion-item>
+    <ion-item><ion-icon name="hand"></ion-icon> UUID: {{device.uuid}}</ion-item>
+    <ion-item><ion-icon name="hand"></ion-icon> Orientation: <span class="portrait">Portrait</span><span class="paysage">Paysage</span></ion-item>
+    <ion-item><ion-icon name="hand"></ion-icon> Position GPS: ({{gpsX}}, {{gpsY}})</ion-item>
+  </ion-list>
 </ion-content>
